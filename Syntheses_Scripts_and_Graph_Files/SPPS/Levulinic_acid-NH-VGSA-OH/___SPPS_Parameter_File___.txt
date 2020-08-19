@@ -1,0 +1,113 @@
+﻿___SPPS Parameter File___
+All the headlines flanked by single underlines should not be changed. 
+
+_sequence_
+Val-Gly-Ser						# Omit the amino acid that is already on the resin
+
+_scale_
+scale = 0.5 						# [mmol]
+
+_files_								# whitespace characters in the file name are not well tolerated
+experiment = SR_Chemputer_02-26
+graph = SPPS_Chemputer_Graph_rearranged.json
+
+__Explicit SPPS Process Parameters__
+Note: for each operation firs the reagents are listed as reagent name = reagent volume [mL] with one entry per line. Finally, time and temperature are specified and the number of repeats for that operation. If no repeats are given it is performed once. 
+
+_swell_resin_
+DMF = 9 	                    	# Reagent name = Volume [mL]
+Process 							# The process is described as temperature [°C] : time [s]. Heats to temp for time w.r.t. start of the process.  
+25 : 3600
+
+_deprotection_1_
+Piperidine = 9						# Reagent name = Volume [mL]
+Process 							# The process is described as temperature [°C] : time [s]. Heats to temp for time w.r.t. start of the process.  
+25 : 180
+
+_deprotection_2_
+Piperidine = 9						# Reagent name = Volume [mL]
+Process 							# The process is described as temperature [°C] : time [s]. Heats to temp for time w.r.t. start of the process.  
+25 : 720
+
+_coupling_
+AminoAcid = 4.0 	 	            # Reagent name = Volume [mL]
+HBTU = 4.0              			# Reagent name = Volume [mL]
+DIPEA = 2.0 	 	               	# Reagent name = Volume [mL]
+DMF = 0.5							# Reagent name = Volume [mL] (makes sure all DIPEA is deliverd to the target)
+Process 							# The process is described as temperature [°C] : time [s]. Heats to temp for time w.r.t. start of the process.  
+70 : 3600	
+reps = 2							# Set to 2 for double coupling, etc...
+
+_cleavage_mix_						# preparing the cleavage mix on the fly
+TFA = 19.0              			# Reagent name = Volume [mL]
+TIPS = 0.6 	 	               		# Reagent name = Volume [mL
+H2O = 0.6 	 	            		# Reagent name = Volume [mL]
+Process
+25 : 0
+
+_cleavage_1_						# parameters for the main cleavage
+Cleavage_mix = 10            		# Reagent name = Volume [mL]
+Process 							# The process is described as temperature [°C] : time [s]. Heats to temp for time w.r.t. start of the process.  
+50 : 3600 
+
+_cleavage_2_						# parameters for washing the resin multiple times with a small amout of cleavage mix
+Cleavage_mix = 0.5            		# Reagent name = Volume [mL]
+Process 							# The process is described as temperature [°C] : time [s]. Heats to temp for time w.r.t. start of the process.  
+50 : 45 	
+reps = 3
+
+_wash_								# Standard washing process in between the SPPS steps
+DMF = 9                         	# Reagent name = Volume [mL]
+Process 							# The process is described as temperature [°C] : time [s]. Heats to temp for time w.r.t. start of the process.  
+25 : 45
+reps = 5                          	# [#] number of repetitions of the washing process 
+
+_DCM_wash_							# Last washing of the resin before cleavage 
+DCM = 9                         	# Reagent name = Volume [mL]
+Process 							# The process is described as temperature [°C] : time [s]. Heats to temp for time w.r.t. start of the process.  
+25 : 45
+reps = 5                          	# [#] number of repetitions of the washing process
+
+_precipitate_						# Precipitation of the peptide
+Ether = 150                         # Reagent name = Volume [mL]
+Process 							# The process is described as temperature [°C] : time [s]. Heats to temp for time w.r.t. start of the process.  
+-25 : 3600
+
+_precipitate_wash_					# Washing of the peptide precipitate
+Ether = 30                         	# Reagent name = Volume [mL]
+Process 							# The process is described as temperature [°C] : time [s]. Heats to temp for time w.r.t. start of the process.  
+-25 : 300
+reps = 3                          	# [#] number of repetitions of the washing process
+
+_collection_						# Collecting the precipitate by dissolution and transfer to target vial
+ACN = 2.0                         	# Reagent name = Volume [mL]
+H2O = 8.0                         	# Reagent name = Volume [mL]
+Process 							# The process is described as temperature [°C] : time [s]. Heats to temp for time w.r.t. start of the process.  
+25 : 300
+reps = 3                          	# [#] number of repetitions of the washing process 
+
+__Implicit Process Parameters__
+The following parameters follow from the general SPPS parameters. Some are specific to the Chemputer hardware that is used. 
+
+_draining_
+reactor = Reactor_1
+draining_factor = 5                 # [#] defines how much more volume should be removed than there is actually liquid in the filter
+time = 60                          	# [s] specifies how long the pump will pause at maximal hub to allow liquid to flow into the syringe
+reactor = Reactor_2
+draining_factor = 3                 # [#] defines how much more volume should be removed than there is actually liquid in the filter
+time = 60                          	# [s] specifies how long the pump will pause at maximal hub to allow liquid to flow into the syringe
+
+_dry_
+general_drying = 300                # [s] specifies how long the filter should be connected to vacuum for drying
+final_SPPS_drying = 900				# [s] drying the SPPS filter frit after final washing before cleavage
+precipitate_short_drying = 300		# [s] drying the precipitated peptide inbetween washing cycles
+precipitate_long_drying = 900		# [s] drying the precipitated peptide after the final washing cycle
+
+_general_
+speed_slow = 5                      # [mL/min] slow speed of pumps
+speed = 50                          # [mL/min] standard speed of pumps
+speed_fast = 100                    # [mL/min] max speed before pump stalling becomes a problem 
+stir_rate = 100						# [rpm]
+bb_cleaning_vol = 2.0				# [mL] volume of solvent needed to clean the backbone
+bb_cleaning_vol_large = 5.0			# [mL] volume of solvent needed to clean the backbone
+priming_vol = 1.5					# [mL] volume of reagent transferred to waset to prime tubings
