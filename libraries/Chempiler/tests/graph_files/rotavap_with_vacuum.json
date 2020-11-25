@@ -1,0 +1,144 @@
+{
+  "nodes": [
+    {
+      "id": "rotavap",
+      "type": "rotavap",
+      "x": 360,
+      "y": 240,
+      "internalId": 0,
+      "label": "rotavap",
+      "class": "IKARV10",
+      "name": "rotavap",
+      "port": "COM5",
+      "current_volume": 50,
+      "max_volume": 100
+    },
+    {
+      "id": "valve",
+      "type": "valve",
+      "x": 200,
+      "y": 240,
+      "internalId": 1,
+      "label": "valve",
+      "class": "ChemputerValve",
+      "name": "valve",
+      "address": ""
+    },
+    {
+      "id": "pump",
+      "type": "pump",
+      "x": 200,
+      "y": 120,
+      "internalId": 3,
+      "label": "pump",
+      "class": "ChemputerPump",
+      "name": "pump",
+      "address": "",
+      "max_volume": 100,
+      "current_volume": 0
+    },
+    {
+      "id": "reactor",
+      "type": "reactor",
+      "x": 120,
+      "y": 320,
+      "internalId": 4,
+      "label": "reactor",
+      "class": "ChemputerReactor",
+      "name": "reactor",
+      "current_volume": 0,
+      "max_volume": 100,
+      "necks": 1
+    },
+    {
+      "id": "stirrer",
+      "type": "stirrer",
+      "x": 40,
+      "y": 320,
+      "internalId": 10,
+      "label": "stirrer",
+      "class": "IKAmicrostar75",
+      "name": "stirrer",
+      "port": "COM4"
+    },
+    {
+      "id": 12,
+      "type": "vacuum",
+      "x": 440,
+      "y": 280,
+      "class": "CVC3000",
+      "name": "",
+      "current_volume": 0,
+      "max_volume": 100,
+      "necks": 1,
+      "internalId": 12,
+      "label": 12
+    }
+  ],
+  "links": [
+    {
+      "id": 2,
+      "sourceInternal": 1,
+      "targetInternal": 0,
+      "source": "valve",
+      "target": "rotavap",
+      "port": "(1,evaporate)"
+    },
+    {
+      "id": 5,
+      "sourceInternal": 1,
+      "targetInternal": 4,
+      "source": "valve",
+      "target": "reactor",
+      "port": "(0,0)"
+    },
+    {
+      "id": 6,
+      "sourceInternal": 4,
+      "targetInternal": 1,
+      "source": "reactor",
+      "target": "valve",
+      "port": "(0,0)"
+    },
+    {
+      "id": 7,
+      "sourceInternal": 3,
+      "targetInternal": 1,
+      "source": "pump",
+      "target": "valve",
+      "port": "(0,-1)"
+    },
+    {
+      "id": 8,
+      "sourceInternal": 1,
+      "targetInternal": 3,
+      "source": "valve",
+      "target": "pump",
+      "port": "(-1,0)"
+    },
+    {
+      "id": 9,
+      "sourceInternal": 0,
+      "targetInternal": 1,
+      "source": "rotavap",
+      "target": "valve",
+      "port": "(collect,1)"
+    },
+    {
+      "id": 11,
+      "sourceInternal": 10,
+      "targetInternal": 4,
+      "source": "stirrer",
+      "target": "reactor",
+      "port": "(,)"
+    },
+    {
+      "id": 13,
+      "sourceInternal": 12,
+      "targetInternal": 0,
+      "source": 12,
+      "target": "rotavap",
+      "port": "(,)"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "nodes": [
+    {
+      "id": "node1",
+      "type": "pump",
+      "x": 280,
+      "y": 200,
+      "class": "ChemputerPump",
+      "name": "node1",
+      "address": "",
+      "max_volume": 100,
+      "current_volume": 0,
+      "internalId": 0,
+      "label": "node1"
+    },
+    {
+      "id": "node1",
+      "type": "valve",
+      "x": 280,
+      "y": 360,
+      "class": "ChemputerValve",
+      "name": "node1",
+      "address": "",
+      "current_volume": 0,
+      "internalId": 1,
+      "label": "node1"
+    }
+  ],
+  "links": [
+    {
+      "id": 2,
+      "sourceInternal": 1,
+      "targetInternal": 0,
+      "source": "node1",
+      "target": "node1",
+      "port": "(0,0)"
+    },
+    {
+      "id": 3,
+      "sourceInternal": 0,
+      "targetInternal": 1,
+      "source": "node1",
+      "target": "node1",
+      "port": "(0,0)"
+    }
+  ]
+}

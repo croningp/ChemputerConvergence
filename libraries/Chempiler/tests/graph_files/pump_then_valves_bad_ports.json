@@ -1,0 +1,126 @@
+{
+  "nodes": [
+    {
+      "id": "flask_nitrogen",
+      "type": "flask",
+      "x": 40,
+      "y": 200,
+      "internalId": 0,
+      "label": "flask_nitrogen",
+      "class": "ChemputerFlask",
+      "name": "flask_nitrogen",
+      "chemical": "",
+      "current_volume": 100,
+      "max_volume": 100
+    },
+    {
+      "id": "filter",
+      "type": "filter",
+      "x": 280,
+      "y": 440,
+      "internalId": 1,
+      "label": "filter",
+      "class": "ChemputerFilter",
+      "name": "filter",
+      "current_volume": 0,
+      "max_volume": 100,
+      "dead_volume": 10
+    },
+    {
+      "id": "valve1",
+      "type": "valve",
+      "x": 40,
+      "y": 320,
+      "internalId": 2,
+      "label": "valve1",
+      "class": "ChemputerValve",
+      "name": "valve1",
+      "address": ""
+    },
+    {
+      "id": "valve2",
+      "type": "valve",
+      "x": 160,
+      "y": 320,
+      "internalId": 3,
+      "label": "valve2",
+      "class": "ChemputerValve",
+      "name": "valve2",
+      "address": ""
+    },
+    {
+      "id": "valve3",
+      "type": "valve",
+      "x": 280,
+      "y": 320,
+      "internalId": 4,
+      "label": "valve3",
+      "class": "ChemputerValve",
+      "name": "valve3",
+      "address": ""
+    },
+    {
+      "id": "pump1",
+      "type": "pump",
+      "x": -80,
+      "y": 320,
+      "internalId": 9,
+      "label": "pump1",
+      "class": "ChemputerPump",
+      "name": "pump1",
+      "address": "",
+      "max_volume": 100,
+      "current_volume": 0
+    }
+  ],
+  "links": [
+    {
+      "id": 5,
+      "sourceInternal": 0,
+      "targetInternal": 2,
+      "source": "flask_nitrogen",
+      "target": "valve1",
+      "port": "(0,2)"
+    },
+    {
+      "id": 6,
+      "sourceInternal": 2,
+      "targetInternal": 3,
+      "source": "valve1",
+      "target": "valve2",
+      "port": "(1,2)"
+    },
+    {
+      "id": 7,
+      "sourceInternal": 3,
+      "targetInternal": 4,
+      "source": "valve2",
+      "target": "valve3",
+      "port": "(2,-1)"
+    },
+    {
+      "id": 8,
+      "sourceInternal": 4,
+      "targetInternal": 1,
+      "source": "valve3",
+      "target": "filter",
+      "port": "(3,bottom)"
+    },
+    {
+      "id": 10,
+      "sourceInternal": 9,
+      "targetInternal": 2,
+      "source": "pump1",
+      "target": "valve1",
+      "port": "(0,-1)"
+    },
+    {
+      "id": 11,
+      "sourceInternal": 2,
+      "targetInternal": 9,
+      "source": "valve1",
+      "target": "pump1",
+      "port": "(-1,0)"
+    }
+  ]
+}

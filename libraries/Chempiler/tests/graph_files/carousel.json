@@ -1,0 +1,320 @@
+{
+  "nodes": [
+    {
+      "id": "valve1",
+      "type": "valve",
+      "x": 280,
+      "y": 80,
+      "class": "ChemputerValve",
+      "name": "valve1",
+      "address": "",
+      "internalId": 1,
+      "label": "valve1"
+    },
+    {
+      "id": "valve2",
+      "type": "valve",
+      "x": 440,
+      "y": 80,
+      "class": "ChemputerValve",
+      "name": "valve2",
+      "address": "",
+      "internalId": 3,
+      "label": "valve2"
+    },
+    {
+      "id": "cartridge1",
+      "type": "custom",
+      "x": 360,
+      "y": 320,
+      "class": "ChemputerCartridge",
+      "name": "cartridge1",
+      "internalId": 10,
+      "label": "cartridge1"
+    },
+    {
+      "id": "cartridge2",
+      "type": "custom",
+      "x": 400,
+      "y": 320,
+      "class": "ChemputerCartridge",
+      "name": "cartridge2",
+      "internalId": 11,
+      "label": "cartridge2"
+    },
+    {
+      "id": 12,
+      "type": "custom",
+      "x": 440,
+      "y": 320,
+      "class": "ChemputerCartridge",
+      "internalId": 12,
+      "label": 12
+    },
+    {
+      "id": 13,
+      "type": "custom",
+      "x": 480,
+      "y": 320,
+      "class": "ChemputerCartridge",
+      "internalId": 13,
+      "label": 13
+    },
+    {
+      "id": 14,
+      "type": "custom",
+      "x": 520,
+      "y": 320,
+      "class": "ChemputerCartridge",
+      "internalId": 14,
+      "label": 14
+    },
+    {
+      "id": 15,
+      "type": "custom",
+      "x": 560,
+      "y": 320,
+      "class": "ChemputerCartridge",
+      "internalId": 15,
+      "label": 15
+    },
+    {
+      "id": "valve_carousel",
+      "type": "valve",
+      "x": 360,
+      "y": 440,
+      "class": "ChemputerValve",
+      "name": "valve_carousel",
+      "address": "",
+      "internalId": 9,
+      "label": "valve_carousel"
+    },
+    {
+      "id": "manifold1",
+      "type": "custom",
+      "x": 440,
+      "y": 200,
+      "class": "ChemputerManifold",
+      "name": "manifold1",
+      "internalId": 2,
+      "label": "manifold1"
+    },
+    {
+      "id": "pump1",
+      "type": "pump",
+      "x": 280,
+      "y": -40,
+      "class": "ChemputerPump",
+      "name": "pump1",
+      "address": "",
+      "max_volume": 25,
+      "internalId": 29,
+      "label": "pump1",
+      "current_volume": 0
+    },
+    {
+      "id": "pump2",
+      "type": "pump",
+      "x": 440,
+      "y": -40,
+      "class": "ChemputerPump",
+      "name": "pump2",
+      "address": "",
+      "max_volume": 25,
+      "internalId": 31,
+      "label": "pump2",
+      "current_volume": 0
+    },
+    {
+      "id": "flask_reactor",
+      "type": "reactor",
+      "x": 160,
+      "y": 80,
+      "class": "ChemputerReactor",
+      "name": "flask_reactor",
+      "current_volume": 0,
+      "max_volume": 250,
+      "necks": 1,
+      "internalId": 4,
+      "label": "flask_reactor"
+    }
+  ],
+  "links": [
+    {
+      "id": 19,
+      "sourceInternal": 9,
+      "targetInternal": 10,
+      "source": "valve_carousel",
+      "target": "cartridge1",
+      "port": "(0,in)"
+    },
+    {
+      "id": 20,
+      "sourceInternal": 9,
+      "targetInternal": 11,
+      "source": "valve_carousel",
+      "target": "cartridge2",
+      "port": "(1,in)"
+    },
+    {
+      "id": 21,
+      "sourceInternal": 9,
+      "targetInternal": 12,
+      "source": "valve_carousel",
+      "target": 12,
+      "port": "(2,in)"
+    },
+    {
+      "id": 22,
+      "sourceInternal": 9,
+      "targetInternal": 13,
+      "source": "valve_carousel",
+      "target": 13,
+      "port": "(3,in)"
+    },
+    {
+      "id": 23,
+      "sourceInternal": 9,
+      "targetInternal": 14,
+      "source": "valve_carousel",
+      "target": 14,
+      "port": "(4,in)"
+    },
+    {
+      "id": 24,
+      "sourceInternal": 9,
+      "targetInternal": 15,
+      "source": "valve_carousel",
+      "target": 15,
+      "port": "(5,in)"
+    },
+    {
+      "id": 25,
+      "sourceInternal": 1,
+      "targetInternal": 9,
+      "source": "valve1",
+      "target": "valve_carousel",
+      "port": "(1,-1)"
+    },
+    {
+      "id": 6,
+      "sourceInternal": 10,
+      "targetInternal": 2,
+      "source": "cartridge1",
+      "target": "manifold1",
+      "port": "(out,0)"
+    },
+    {
+      "id": 7,
+      "sourceInternal": 11,
+      "targetInternal": 2,
+      "source": "cartridge2",
+      "target": "manifold1",
+      "port": "(out,0)"
+    },
+    {
+      "id": 8,
+      "sourceInternal": 12,
+      "targetInternal": 2,
+      "source": 12,
+      "target": "manifold1",
+      "port": "(out,0)"
+    },
+    {
+      "id": 16,
+      "sourceInternal": 13,
+      "targetInternal": 2,
+      "source": 13,
+      "target": "manifold1",
+      "port": "(out,0)"
+    },
+    {
+      "id": 17,
+      "sourceInternal": 14,
+      "targetInternal": 2,
+      "source": 14,
+      "target": "manifold1",
+      "port": "(out,0)"
+    },
+    {
+      "id": 18,
+      "sourceInternal": 15,
+      "targetInternal": 2,
+      "source": 15,
+      "target": "manifold1",
+      "port": "(out,0)"
+    },
+    {
+      "id": 26,
+      "sourceInternal": 1,
+      "targetInternal": 3,
+      "source": "valve1",
+      "target": "valve2",
+      "port": "(4,5)"
+    },
+    {
+      "id": 27,
+      "sourceInternal": 3,
+      "targetInternal": 1,
+      "source": "valve2",
+      "target": "valve1",
+      "port": "(5,4)"
+    },
+    {
+      "id": 28,
+      "sourceInternal": 2,
+      "targetInternal": 3,
+      "source": "manifold1",
+      "target": "valve2",
+      "port": "(0,1)"
+    },
+    {
+      "id": 34,
+      "sourceInternal": 29,
+      "targetInternal": 1,
+      "source": "pump1",
+      "target": "valve1",
+      "port": "(0,-1)"
+    },
+    {
+      "id": 35,
+      "sourceInternal": 1,
+      "targetInternal": 29,
+      "source": "valve1",
+      "target": "pump1",
+      "port": "(-1,0)"
+    },
+    {
+      "id": 36,
+      "sourceInternal": 3,
+      "targetInternal": 31,
+      "source": "valve2",
+      "target": "pump2",
+      "port": "(-1,0)"
+    },
+    {
+      "id": 37,
+      "sourceInternal": 31,
+      "targetInternal": 3,
+      "source": "pump2",
+      "target": "valve2",
+      "port": "(0,-1)"
+    },
+    {
+      "id": 0,
+      "sourceInternal": 4,
+      "targetInternal": 1,
+      "source": "flask_reactor",
+      "target": "valve1",
+      "port": "(0,2)"
+    },
+    {
+      "id": 5,
+      "sourceInternal": 1,
+      "targetInternal": 4,
+      "source": "valve1",
+      "target": "flask_reactor",
+      "port": "(2,0)"
+    }
+  ]
+}

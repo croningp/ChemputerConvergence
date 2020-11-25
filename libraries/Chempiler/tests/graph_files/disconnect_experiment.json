@@ -1,0 +1,175 @@
+{
+  "nodes": [
+    {
+      "id": "pump1",
+      "type": "pump",
+      "x": 80,
+      "y": 40,
+      "properties": {
+        "class": "ChemputerPump",
+        "name": "pump1",
+        "address": "192.168.1.70",
+        "max_volume": "100"
+      },
+      "class": "ChemputerPump",
+      "name": "pump1",
+      "address": "192.168.1.70",
+      "max_volume": 100,
+      "internalId": 0,
+      "label": "pump1",
+      "current_volume": 0
+    },
+    {
+      "id": "valve1",
+      "type": "valve",
+      "x": 80,
+      "y": 160,
+      "properties": {
+        "class": "ChemputerValve",
+        "name": "valve1",
+        "address": "192.168.1.80",
+        "max_volume": "100"
+      },
+      "class": "ChemputerValve",
+      "name": "valve1",
+      "address": "192.168.1.80",
+      "max_volume": 100,
+      "internalId": 1,
+      "label": "valve1"
+    },
+    {
+      "id": "flask_water",
+      "type": "flask",
+      "x": 0,
+      "y": 280,
+      "properties": {
+        "class": "ChemputerFlask",
+        "name": "flask_water",
+        "chemical": "water",
+        "current_volume": "100",
+        "max_volume": "100"
+      },
+      "class": "ChemputerFlask",
+      "name": "flask_water",
+      "chemical": "water",
+      "current_volume": 100,
+      "max_volume": 100,
+      "internalId": 2,
+      "label": "flask_water"
+    },
+    {
+      "id": "filter1",
+      "type": "filter",
+      "x": 200,
+      "y": 240,
+      "properties": {
+        "class": "ChemputerFilter",
+        "name": "filter1",
+        "current_volume": "0",
+        "max_volume": "100",
+        "dead_volume": 10
+      },
+      "class": "ChemputerFilter",
+      "name": "filter1",
+      "current_volume": 0,
+      "max_volume": 100,
+      "dead_volume": 10,
+      "internalId": 6,
+      "label": "filter1"
+    },
+    {
+      "id": "waste1",
+      "type": "waste",
+      "x": -80,
+      "y": 160,
+      "properties": {
+        "class": "ChemputerWaste",
+        "name": "waste1",
+        "current_volume": "0",
+        "max_volume": "100",
+        "necks": 1
+      },
+      "class": "ChemputerWaste",
+      "name": "waste1",
+      "current_volume": 0,
+      "max_volume": 100,
+      "necks": 1,
+      "internalId": 8,
+      "label": "waste1"
+    },
+    {
+      "id": "stirrer_filter",
+      "type": "stirrer",
+      "x": 240,
+      "y": 320,
+      "properties": {
+        "class": "IKAmicrostar75",
+        "name": "stirrer_filter",
+        "port": ""
+      },
+      "class": "IKAmicrostar75",
+      "name": "stirrer_filter",
+      "port": "COM12",
+      "internalId": 11,
+      "label": "stirrer_filter"
+    }
+  ],
+  "links": [
+    {
+      "id": 3,
+      "sourceInternal": 2,
+      "targetInternal": 1,
+      "source": "flask_water",
+      "target": "valve1",
+      "port": "(0,0)"
+    },
+    {
+      "id": 4,
+      "sourceInternal": 1,
+      "targetInternal": 0,
+      "source": "valve1",
+      "target": "pump1",
+      "port": "(-1,0)"
+    },
+    {
+      "id": 5,
+      "sourceInternal": 0,
+      "targetInternal": 1,
+      "source": "pump1",
+      "target": "valve1",
+      "port": "(0,-1)"
+    },
+    {
+      "id": 7,
+      "sourceInternal": 1,
+      "targetInternal": 6,
+      "source": "valve1",
+      "target": "filter1",
+      "port": "(1,top)"
+    },
+    {
+      "id": 9,
+      "sourceInternal": 1,
+      "targetInternal": 8,
+      "source": "valve1",
+      "target": "waste1",
+      "port": "(2,0)"
+    },
+    {
+      "id": 10,
+      "sourceInternal": 6,
+      "targetInternal": 1,
+      "source": "filter1",
+      "target": "valve1",
+      "port": "(bottom,1)"
+    },
+    {
+      "id": 12,
+      "sourceInternal": 11,
+      "targetInternal": 6,
+      "source": "stirrer_filter",
+      "target": "filter1",
+      "port": "(,)"
+    }
+  ]
+}
